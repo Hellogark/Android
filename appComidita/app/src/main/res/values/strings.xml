@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">appComidita</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_paquetes">paquetes</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="stringPkt1">Este paquete contiene los siguientes beneficios: \n
+        - Ubicarse en el mapa para ser encontrado por los usuarios. \n
+        - Personalizar el perfil de tu establecimiento \n
+            </string>
+    <string name="stringPkt2">
+        Este paquete ofrece los siguientes beneficios: \n
+        - Ubicarse en el mapa para ser encontrado por los usuarios.\n
+        - Personalizar el perfil de tu establecimiento.\n
+        - Creación de tu menú.\n
+        - Marcador personalizado en el mapa para ser ubicado con mayor facilidiad.\n
+
+    </string>
+    <string-array name="semana">
+        <item>Lunes</item>
+        <item>Martes</item>
+        <item>Miércoles</item>
+        <item>Jueves</item>
+        <item>Viernes</item>
+        <item>Sábado</item>
+        <item>Domingo</item>
+
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_mapa_locales">Mapa_local</string>
+
+    <!-- Strings related to login -->
+
+</resources>
