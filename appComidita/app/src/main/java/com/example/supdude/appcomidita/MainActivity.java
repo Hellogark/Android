@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .setDatabaseUrl("https://foodseeker-1.firebaseio.com/")
                 .setStorageBucket("foodseeker-1.appspot.com");
         FirebaseApp.initializeApp(this, builder.build());
+        if (!FirebaseApp.getApps(this).isEmpty()) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        }
+        if (!FirebaseApp.getInstance().getName().contains("DEFAULT")) {
+
 
             FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser();
             if (usuario != null) {
@@ -53,10 +58,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(new Intent(MainActivity.this, tiposComida.class));
                 this.finish();
 
+            } else {
+                if (FirebaseApp.getInstance().isDefaultApp()) {
+                return;
+                }
             }
-
         }
-
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){

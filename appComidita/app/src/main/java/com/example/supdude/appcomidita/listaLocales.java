@@ -57,7 +57,7 @@ public class listaLocales extends AppCompatActivity implements Serializable, Vie
 
 
 
-            refLocales.orderByChild(nombreTipo).equalTo(nombreTipo).addListenerForSingleValueEvent(new ValueEventListener() {
+            refLocales.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     lista.removeAll(lista);
