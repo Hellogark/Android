@@ -1,20 +1,17 @@
 package com.example.supdude.appcomidita;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +23,13 @@ import java.util.ArrayList;
 public class local extends AppCompatActivity implements View.OnClickListener {
     ArrayList<datosMenu> lista;
     ArrayList <datosLocal> horas;
-    TextView nombreLocal,presupuesto, direc, catego, tel, sitio,semana;
+    TextView nombreLocal;
+    static TextView presupuesto;
+    TextView direc;
+    TextView catego;
+    TextView tel;
+    TextView sitio;
+    TextView semana;
     Spinner horario;
     ImageView imagenLocal, mapa,atrasLocal;
     datosLocal dL,hor;
@@ -108,6 +111,9 @@ public class local extends AppCompatActivity implements View.OnClickListener {
                                                       final String nombreLoc = intent.getStringExtra("nombreL");
                                                       String item = parent.getItemAtPosition(position).toString();
                                                       nombreLocal.setText(nombreLoc);
+
+
+
                                                       DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                                                       final DatabaseReference refNom = ref.child("Locales");
                                                       refNom.orderByChild("Nombre").equalTo(nombreLoc).addValueEventListener(new ValueEventListener() {
@@ -187,6 +193,12 @@ public class local extends AppCompatActivity implements View.OnClickListener {
         recyclerView.setAdapter(new AdaptadorMenu(lista, new RecyclerViewOnItemClickListener() {
             @Override
             public void onClick(View v, int position) {
+                /*total = Double.parseDouble(String.valueOf(presupuesto.getText()));
+                total = total + lista.get(position).getPrecio();
+                presupuesto.setText(String.valueOf(total));*/
+
+                //presupuesto.setText(String.valueOf(AdaptadorMenu.editWatcher.recibirDato(Double.parseDouble(String.valueOf(presupuesto.getText())),lista.get(position).getPrecio())));
+
                 //Intent i = new Intent(listaLocales.this, local.class);
                 //i.putExtra("objeto",  lista.get(position));
                 //i.putExtra("posicion", position);
@@ -212,6 +224,9 @@ public void actualizarValor(){
         lista.add(new datosMenu("Pizza", "Familiar de 8 trozos", 1.0,0.0 , R.drawable.littlecaesars,0));
     }
 
+    public static void dato(Double t){
+        presupuesto.setText(String.valueOf(t));
+    }
     public void obtenerAllData() {
 
         Intent intent=getIntent();
@@ -245,7 +260,7 @@ public void actualizarValor(){
                         public void onClick(View v) {
                             switch (v.getId()) {
                                 case R.id.imagenMapa:
-                                    Intent i = new Intent(local.this, mapaLocales.class);
+                                    Intent i = new Intent(com.example.supdude.appcomidita.local.this, mapaLocales.class);
 
                                    i.putExtra("coordenada",dL.nombreLocal);
                                     setResult(RESULT_OK, i);
@@ -275,7 +290,7 @@ public void actualizarValor(){
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.atr_InfoLocal:
-                startActivity(new Intent(local.this,listaLocales.class));
+                startActivity(new Intent(com.example.supdude.appcomidita.local.this,listaLocales.class));
 
 
 

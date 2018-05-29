@@ -1,6 +1,5 @@
 package com.example.supdude.appcomidita;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -8,14 +7,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteViewHolder> {
@@ -62,6 +56,8 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
         return data.size();
     }
 
+    public static int cantidad;
+    public static double total;
     class PaletteViewHolder extends RecyclerView.ViewHolder implements View
             .OnClickListener {
         private ImageView circleView;
@@ -70,7 +66,7 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
         private TextView priceTextView, cantidadEditText;
         public ImageView mas;
         public ImageView menos;
-        public int cantidad;
+
 
 
         public PaletteViewHolder(View itemView) {
@@ -83,13 +79,15 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
             mas = (ImageView) itemView.findViewById(R.id.imgMas);
             menos = (ImageView) itemView.findViewById(R.id.imgMenos);
 
+
             mas.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     cantidad = Integer.parseInt(cantidadEditText.getText().toString());
                     cantidad++;
                     data.get(posicion).setCantidad(cantidad);
                     cantidadEditText.setText("" + String.valueOf(cantidad));
-
+                    total = total + Double.parseDouble(String.valueOf(priceTextView.getText()));
+                    local.dato(total);
                 }
             });
             menos.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +97,8 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
                         cantidad--;
                         data.get(posicion).setCantidad(cantidad);
                         cantidadEditText.setText("" + String.valueOf(cantidad));
+                        total = total - Double.parseDouble(String.valueOf(priceTextView.getText()));
+                        local.dato(total);
                     }
                 }
             });
@@ -152,9 +152,9 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
             return cantidadEditText;
         }
 
-        public void setCantidad(int cantidad) {
-            this.cantidad = cantidad;
-        }
+        //public void setCantidad(int cantidad) {
+          //  this.cantidad = cantidad;
+        //}
 
         @Override
         public void onClick(View v) {
@@ -165,7 +165,7 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
         }
     }
 
-    class editWatcher implements TextWatcher {
+    static class editWatcher implements TextWatcher {
         private View view;
 
         private editWatcher(View view) {
@@ -183,6 +183,18 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
         }
 
         @Override
+        public void afterTextChanged(Editable s) {
+
+        }
+
+        public static double recibirDato(Double t, Double p){
+            Double total;
+
+            total = t + p;
+            return total;
+        }
+
+       /* @Override
         public void afterTextChanged(Editable s) {
             String qtyString = s.toString();
             DecimalFormat df = new DecimalFormat("0.00##");
@@ -202,7 +214,7 @@ public class AdaptadorMenu extends RecyclerView.Adapter<AdaptadorMenu.PaletteVie
                 txtTotal.setText(df.format(totalOrden));
 
             }
-        }
+        }*/
 
 
     }

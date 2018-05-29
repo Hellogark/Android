@@ -133,7 +133,7 @@ public class registroLocales extends AppCompatActivity implements View.OnClickLi
                             }
                         );
                 break;
-            case R.id.atrasRU:
+            case R.id.atrasLO:
                 finish();
                 break;
 

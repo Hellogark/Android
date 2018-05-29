@@ -141,17 +141,23 @@ public class mapaLocales extends FragmentActivity implements OnMapReadyCallback,
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot nodo : dataSnapshot.getChildren()) {
-                    lon = nodo.child("Ubicacion").child("Longitud").getValue(String.class);
-                    lat = nodo.child("Ubicacion").child("Latitud").getValue(String.class);
+                    if (nodo.exists()) {
+                        lon = nodo.child("Ubicacion").child("Longitud").getValue(String.class);
+                        lat = nodo.child("Ubicacion").child("Latitud").getValue(String.class);
+
+
+                        LatLng goUbicacion = new LatLng(Double.parseDouble(lat), Double.parseDouble(lon));
+                        CameraPosition cameraPosition = new CameraPosition.Builder()
+                                .target(goUbicacion)      // Sets the center of the map to Mountain View
+                                .zoom(18)                   // Sets the zoom
+                                .bearing(0)                // Sets the orientation of the camera to east
+                                .tilt(30)                   // Sets the tilt of the camera to 30 degrees
+                                .build();                   // Creates a CameraPosition from the builder
+                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    }else{
+                        Toast.makeText(mapaLocales.this, "No se encuentra la ubicación especificada", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                LatLng goUbicacion = new LatLng(Double.parseDouble(lat), Double.parseDouble(lon));
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(goUbicacion)      // Sets the center of the map to Mountain View
-                        .zoom(18)                   // Sets the zoom
-                        .bearing(0)                // Sets the orientation of the camera to east
-                        .tilt(30)                   // Sets the tilt of the camera to 30 degrees
-                        .build();                   // Creates a CameraPosition from the builder
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
 
             @Override

@@ -2,12 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:color="@color/disabled_color">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
@@ -19,15 +19,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/textView15"
-            android:layout_marginBottom="7dp"
-            android:layout_marginEnd="74dp"
-            android:layout_marginRight="74dp"
-            android:layout_marginTop="94dp"
-            app:layout_constraintBottom_toBottomOf="@+id/txtCantidad"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtCantidad"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="88dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtCantidad"
+            app:layout_constraintStart_toEndOf="@+id/txtPrecio"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/less" />
 
         <ImageView
@@ -50,28 +47,23 @@
 
         <ImageView
             android:id="@+id/imgMas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignTop="@+id/textView15"
-            android:layout_marginBottom="7dp"
-            android:layout_marginTop="94dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="88dp"
             android:layout_toStartOf="@+id/txtCantidad"
-            app:layout_constraintBottom_toBottomOf="@+id/txtCantidad"
-            app:layout_constraintEnd_toStartOf="@+id/txtCantidad"
-            app:layout_constraintStart_toEndOf="@+id/txtPrecio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtCantidad"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/add" />
 
         <TextView
             android:id="@+id/txtCantidad"
             android:layout_width="63dp"
             android:layout_height="41dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="80dp"
             android:ems="10"
             android:enabled="false"
             android:gravity="center"
@@ -79,9 +71,9 @@
             android:text="0"
             android:textColor="@color/cast_expanded_controller_background_color"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/imgMenos"
-            app:layout_constraintStart_toEndOf="@+id/imgMas"
-            app:layout_constraintTop_toBottomOf="@+id/txtNombrePlato" />
+            app:layout_constraintEnd_toStartOf="@+id/imgMas"
+            app:layout_constraintStart_toEndOf="@+id/imgMenos"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtPrecio"
@@ -89,14 +81,17 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/textView15"
             android:layout_alignStart="@+id/txtNombrePlato"
-            android:layout_marginEnd="115dp"
-            android:layout_marginRight="115dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="56dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="22dp"
             android:text="10"
             android:textColor="@color/cast_expanded_controller_background_color"
             android:textSize="17sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView15"
-            app:layout_constraintEnd_toStartOf="@+id/imgMas"
-            app:layout_constraintStart_toEndOf="@+id/textView15" />
+            app:layout_constraintEnd_toStartOf="@+id/imgMenos"
+            app:layout_constraintStart_toEndOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionComida" />
 
         <TextView
             android:id="@+id/txtDescripcionComida"
@@ -139,9 +134,10 @@
             android:layout_alignEnd="@+id/imgPlato"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="10dp"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="32dp"
             android:layout_marginRight="10dp"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
             android:text="Precio $"
             app:layout_constraintEnd_toStartOf="@+id/txtPrecio"
             app:layout_constraintStart_toStartOf="parent"

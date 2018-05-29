@@ -57,9 +57,10 @@ public class login extends AppCompatActivity implements View.OnClickListener{
             case R.id.btnIniciarSesion:
                 email=correo.getText().toString();
                 pass=contraseña.getText().toString().trim();
-                verificaciones(email,pass);
-                autenticar(email,pass);
-
+                if(!(email.isEmpty()||pass.isEmpty())) {
+                    verificaciones(email, pass);
+                    autenticar(email, pass);
+                }
                 break;
             case R.id.forgPass:
                 startActivity(new Intent (login.this,resetPass.class) );
@@ -68,6 +69,7 @@ public class login extends AppCompatActivity implements View.OnClickListener{
 
             case    R.id.atras_login:
                 startActivity(new Intent(login.this,MainActivity.class));
+                finish();
                 break;
 
 
