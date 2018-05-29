@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:color="@color/disabled_color">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="0dp">
+
+        <ImageView
+            android:id="@+id/imgMenos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/textView15"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="88dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtCantidad"
+            app:layout_constraintStart_toEndOf="@+id/txtPrecio"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/less" />
+
+        <ImageView
+            android:id="@+id/imgPlato"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="18dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView15"
+            app:layout_constraintEnd_toStartOf="@+id/txtDescripcionComida"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/imgMas"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignTop="@+id/textView15"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="88dp"
+            android:layout_toStartOf="@+id/txtCantidad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtCantidad"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/add" />
+
+        <TextView
+            android:id="@+id/txtCantidad"
+            android:layout_width="63dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="80dp"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:text="0"
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/imgMas"
+            app:layout_constraintStart_toEndOf="@+id/imgMenos"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView15"
+            android:layout_alignStart="@+id/txtNombrePlato"
+            android:layout_marginEnd="56dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginRight="56dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="22dp"
+            android:text="10"
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toStartOf="@+id/imgMenos"
+            app:layout_constraintStart_toEndOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescripcionComida" />
+
+        <TextView
+            android:id="@+id/txtDescripcionComida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imgPlato"
+            android:layout_alignStart="@+id/txtNombrePlato"
+            android:layout_marginEnd="229dp"
+            android:layout_marginRight="229dp"
+            android:layout_marginTop="9dp"
+            android:text="Descripción"
+            android:textColor="@color/cast_expanded_controller_background_color"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgPlato"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombrePlato" />
+
+        <TextView
+            android:id="@+id/txtNombrePlato"
+            android:layout_width="123dp"
+            android:layout_height="27dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="169dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="169dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="20dp"
+            android:text="Nombre plato"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgPlato"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/imgPlato"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:text="Precio $"
+            app:layout_constraintEnd_toStartOf="@+id/txtPrecio"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgPlato" />
+    </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
